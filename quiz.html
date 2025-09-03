@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esperanto Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff3e0;
+            color: #4e342e;
+            text-align: center;
+            padding: 20px;
+        }
+        header {
+            background: #ef6c00;
+            color: white;
+            padding: 20px;
+            margin: -20px -20px 20px -20px;
+        }
+        .quiz {
+            background: #fff8e1;
+            padding: 20px;
+            border: 2px solid #ef6c00;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .quiz button {
+            background: #ef6c00;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .quiz button:hover {
+            background: #d84315;
+        }
+        .btn {
+            background: #ef6c00;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #d84315;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Esperanto Quiz</h1>
+    </header>
+
+    <div class="quiz">
+        <p id="question"></p>
+        <div id="options"></div>
+        <p id="progress"></p>
+        <p id="result"></p>
+    </div>
+
+    <a href="index.html" class="btn">← Back to Dictionary</a>
+
+    <script>
+        const quizData = [
+            {q: "How do you say 'Hello' in Esperanto?", a: "Saluton", options: ["Saluton","Dankon","Jes"]},
+            {q: "How do you say 'Good morning'?", a: "Bonan matenon", options: ["Bonan matenon","Bonvolu","Ne"]},
+            {q: "How do you say 'Thank you'?", a: "Dankon", options: ["Pardonu","Dankon","Libro"]},
+            {q: "How do you say 'Yes'?", a: "Jes", options: ["Jes","Ne","Akvo"]},
+            {q: "How do you say 'No'?", a: "Ne", options: ["Jes","Ne","Familio"]},
+            {q: "Translate: 'Please'", a: "Bonvolu", options: ["Bonvolu","Saluton","Gratulojn"]},
+            {q: "Translate: 'Sorry'", a: "Pardonu", options: ["Mi amas vin","Pardonu","Mi ne scias"]},
+            {q: "Translate: 'What is your name?'", a: "Kio estas via nomo?", options: ["Kio estas via nomo?","Bonan nokton","Ĉu vi parolas la anglan?"]},
+            {q: "Translate: 'My name is…'", a: "Mia nomo estas…", options: ["Mia nomo estas…","Mi fartas bone","Amiko"]},
+            {q: "Translate: 'Nice to meet you'", a: "Ravi renkonti vin", options: ["Ravi renkonti vin","Paco","Lernejo"]},
+            {q: "Translate: 'Where are you from?'", a: "De kie vi estas?", options: ["De kie vi estas?","Libro","Bonan vesperon"]},
+            {q: "Translate: 'I am fine'", a: "Mi fartas bone", options: ["Mi fartas bone","Mia nomo estas…","Jes"]},
+            {q: "Translate: 'Good luck'", a: "Bonŝancon", options: ["Bonŝancon","Pardonu","Mi amas vin"]},
+            {q: "Translate: 'Congratulations'", a: "Gratulojn", options: ["Akvo","Gratulojn","Familio"]},
+            {q: "Translate: 'I love Esperanto'", a: "Mi amas Esperanton", options: ["Mi amas Esperanton","Mi amas vin","Bonvolu"]}
+        ];
+
+        let current = 0;
+        let correct = 0;
+        let wrong = 0;
+
+        function loadQuestion() {
+            if (current < quizData.length) {
+                document.getElementById("question").innerText = quizData[current].q;
+                document.getElementById("progress").innerText = `Question ${current+1} of ${quizData.length}`;
+                let optionsHtml = "";
+                quizData[current].options.forEach(opt => {
+                    optionsHtml += `<button onclick="checkAnswer('${opt}')">${opt}</button>`;
+                });
+                document.getElementById("options").innerHTML = optionsHtml;
+            } else {
+                document.getElementById("question").innerText = "Quiz Finished!";
+                document.getElementById("options").innerHTML = `<button onclick="restartQuiz()">🔄 Try Again</button>`;
+                document.getElementById("progress").innerText = "";
+                document.getElementById("result").innerHTML = `✅ Correct: ${correct}<br>❌ Wrong: ${wrong}`;
+            }
+        }
+
+        function checkAnswer(answer) {
+            if (answer === quizData[current].a) {
+                correct++;
+            } else {
+                wrong++;
+            }
+            current++;
+            loadQuestion();
+        }
+
+        function restartQuiz() {
+            current = 0;
+            correct = 0;
+            wrong = 0;
+            document.getElementById("result").innerText = "";
+            loadQuestion();
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>

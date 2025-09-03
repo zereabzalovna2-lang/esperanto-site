@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esperanto: A Language for Global Communication</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8f0;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: orange;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    .container {
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #ffd699;
+    }
+    .center {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      background-color: orange;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background-color: #e69500;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Esperanto: A Bridge Language 🌍</h1>
+  </header>
+
+  <div class="container">
+    <h2>Mini Dictionary (50 Phrases)</h2>
+    <table>
+      <tr><th>English</th><th>Esperanto</th></tr>
+      <tr><td>Hello</td><td>Saluton</td></tr>
+      <tr><td>Goodbye</td><td>Ĝis revido</td></tr>
+      <tr><td>Please</td><td>Bonvolu</td></tr>
+      <tr><td>Thank you</td><td>Dankon</td></tr>
+      <tr><td>Yes</td><td>Jes</td></tr>
+      <tr><td>No</td><td>Ne</td></tr>
+      <tr><td>Excuse me</td><td>Pardonu min</td></tr>
+      <tr><td>How are you?</td><td>Kiel vi fartas?</td></tr>
+      <tr><td>Good morning</td><td>Bonan matenon</td></tr>
+      <tr><td>Good night</td><td>Bonan nokton</td></tr>
+      <tr><td>What is your name?</td><td>Kio estas via nomo?</td></tr>
+      <tr><td>My name is...</td><td>Mia nomo estas...</td></tr>
+      <tr><td>I don’t understand</td><td>Mi ne komprenas</td></tr>
+      <tr><td>Do you speak English?</td><td>Ĉu vi parolas la anglan?</td></tr>
+      <tr><td>Help!</td><td>Helpu!</td></tr>
+      <tr><td>Where?</td><td>Kie?</td></tr>
+      <tr><td>When?</td><td>Kiam?</td></tr>
+      <tr><td>Why?</td><td>Kial?</td></tr>
+      <tr><td>How?</td><td>Kiel?</td></tr>
+      <tr><td>I love you</td><td>Mi amas vin</td></tr>
+      <tr><td>Friend</td><td>Amiko</td></tr>
+      <tr><td>Family</td><td>Familio</td></tr>
+      <tr><td>School</td><td>Lernejo</td></tr>
+      <tr><td>Work</td><td>Laboro</td></tr>
+      <tr><td>Food</td><td>Manĝaĵo</td></tr>
+      <tr><td>Water</td><td>Akvo</td></tr>
+      <tr><td>House</td><td>Domo</td></tr>
+      <tr><td>Book</td><td>Libro</td></tr>
+      <tr><td>Music</td><td>Muziko</td></tr>
+      <tr><td>Dance</td><td>Danco</td></tr>
+      <tr><td>Beautiful</td><td>Bela</td></tr>
+      <tr><td>Strong</td><td>Forta</td></tr>
+      <tr><td>Fast</td><td>Rapida</td></tr>
+      <tr><td>Slow</td><td>Malrapida</td></tr>
+      <tr><td>Big</td><td>Granda</td></tr>
+      <tr><td>Small</td><td>Malgranda</td></tr>
+      <tr><td>Happy</td><td>Feliĉa</td></tr>
+      <tr><td>Sad</td><td>Malĝoja</td></tr>
+      <tr><td>Hot</td><td>Varma</td></tr>
+      <tr><td>Cold</td><td>Malvarma</td></tr>
+      <tr><td>Day</td><td>Tago</td></tr>
+      <tr><td>Night</td><td>Nokto</td></tr>
+      <tr><td>Today</td><td>Hodiaŭ</td></tr>
+      <tr><td>Tomorrow</td><td>Morgaŭ</td></tr>
+      <tr><td>Yesterday</td><td>Hieraŭ</td></tr>
+      <tr><td>Peace</td><td>Paco</td></tr>
+      <tr><td>Freedom</td><td>Libereco</td></tr>
+      <tr><td>Hope</td><td>Espero</td></tr>
+      <tr><td>Future</td><td>Estonteco</td></tr>
+    </table>
+
+    <div class="center">
+      <a href="about.html" class="btn">ℹ️ About Esperanto</a>
+      <a href="quiz.html" class="btn">Start Quiz →</a>
+    </div>
+
+    <hr>
+
+    <div class="center">
+      <img src="mascot.png" alt="Esperanto Mascot" style="width:200px; border-radius:20px;">
+      <h2>Meet our Esperanto Mascot! 🐾</h2>
+      <p>Click the button and talk with your Esperanto helper 🤖</p>
+      <button onclick="startRecognition()" class="btn">🎤 Talk with Helper</button>
+      <p id="userSpeech"></p>
+      <p id="botReply" style="font-weight:bold; color:darkgreen;"></p>
+    </div>
+  </div>
+
+  <script>
+    function startRecognition() {
+      const recognition = new(window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = "en-US"; 
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const userText = event.results[0][0].transcript;
+        document.getElementById("userSpeech").innerText = "You said: " + userText;
+
+        // Простые ответы
+        let reply = "Sorry, I don’t understand.";
+        if (userText.toLowerCase().includes("hello")) reply = "Hi! How are you?";
+        if (userText.toLowerCase().includes("esperanto")) reply = "Esperanto is a bridge language!";
+        if (userText.toLowerCase().includes("thank you")) reply = "You’re welcome!";
+        if (userText.toLowerCase().includes("goodbye")) reply = "Ĝis revido! Goodbye!";
+
+        document.getElementById("botReply").innerText = reply;
+
+        // Озвучивание
+        let speech = new SpeechSynthesisUtterance(reply);
+        speech.lang = "en-US";
+        window.speechSynthesis.speak(speech);
+      }
+    }
+  </script>
+</body>
+</html>
